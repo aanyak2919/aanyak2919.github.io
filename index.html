@@ -1,0 +1,532 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Aanya Kyal — Rutgers University Finance student portfolio.">
+  <title>Aanya Kyal | Finance Portfolio</title>
+
+  <style>
+    :root {
+      --navy: #102a43;
+      --blue: #2563eb;
+      --blue-light: #eff6ff;
+      --text: #243b53;
+      --muted: #627d98;
+      --white: #ffffff;
+      --background: #f7f9fc;
+      --border: #d9e2ec;
+    }
+
+    * {
+      box-sizing: border-box;
+      margin: 0;
+      padding: 0;
+    }
+
+    html {
+      scroll-behavior: smooth;
+    }
+
+    body {
+      font-family: Arial, Helvetica, sans-serif;
+      color: var(--text);
+      background: var(--background);
+      line-height: 1.6;
+    }
+
+    a {
+      text-decoration: none;
+      color: inherit;
+    }
+
+    /* Navigation */
+    nav {
+      position: sticky;
+      top: 0;
+      z-index: 100;
+      background: rgba(255,255,255,0.96);
+      border-bottom: 1px solid var(--border);
+      backdrop-filter: blur(8px);
+    }
+
+    .nav-container {
+      max-width: 1050px;
+      margin: auto;
+      padding: 16px 24px;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .logo {
+      font-size: 1.25rem;
+      font-weight: 800;
+      color: var(--navy);
+    }
+
+    .nav-links {
+      display: flex;
+      list-style: none;
+      gap: 28px;
+      font-size: 0.95rem;
+      font-weight: 600;
+    }
+
+    .nav-links a:hover {
+      color: var(--blue);
+    }
+
+    /* Hero */
+    .hero {
+      background: var(--white);
+      border-bottom: 1px solid var(--border);
+    }
+
+    .hero-container {
+      max-width: 1050px;
+      margin: auto;
+      min-height: 620px;
+      padding: 80px 24px;
+      display: grid;
+      grid-template-columns: 1.5fr 0.8fr;
+      gap: 70px;
+      align-items: center;
+    }
+
+    .eyebrow {
+      color: var(--blue);
+      text-transform: uppercase;
+      letter-spacing: 2px;
+      font-size: 0.82rem;
+      font-weight: 800;
+      margin-bottom: 14px;
+    }
+
+    h1 {
+      color: var(--navy);
+      font-size: clamp(3rem, 7vw, 5rem);
+      line-height: 1;
+      margin-bottom: 22px;
+    }
+
+    .statement {
+      font-size: 1.2rem;
+      color: var(--muted);
+      max-width: 650px;
+    }
+
+    .hero-buttons {
+      margin-top: 30px;
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    .button {
+      padding: 12px 19px;
+      border-radius: 8px;
+      font-weight: 700;
+      border: 1px solid var(--navy);
+      transition: 0.2s ease;
+    }
+
+    .button-primary {
+      color: white;
+      background: var(--navy);
+    }
+
+    .button-primary:hover {
+      background: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .button-secondary:hover {
+      color: var(--blue);
+      border-color: var(--blue);
+    }
+
+    .headshot {
+      width: 275px;
+      height: 275px;
+      object-fit: cover;
+      border-radius: 50%;
+      display: block;
+      margin: auto;
+      border: 8px solid white;
+      box-shadow: 0 18px 45px rgba(16,42,67,0.18);
+    }
+
+    /* General sections */
+    section {
+      max-width: 1050px;
+      margin: auto;
+      padding: 80px 24px;
+    }
+
+    .section-label {
+      color: var(--blue);
+      font-size: 0.8rem;
+      font-weight: 800;
+      letter-spacing: 1.8px;
+      text-transform: uppercase;
+      margin-bottom: 8px;
+    }
+
+    .section-title {
+      color: var(--navy);
+      font-size: 2.1rem;
+      margin-bottom: 12px;
+    }
+
+    .section-description {
+      color: var(--muted);
+      max-width: 700px;
+      margin-bottom: 35px;
+    }
+
+    /* Skills */
+    .skills-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 16px;
+    }
+
+    .skill-card {
+      background: white;
+      border: 1px solid var(--border);
+      border-radius: 12px;
+      padding: 22px;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .skill-card:hover {
+      transform: translateY(-4px);
+      box-shadow: 0 12px 25px rgba(16,42,67,0.08);
+    }
+
+    .skill-card h3 {
+      color: var(--navy);
+      margin-bottom: 7px;
+    }
+
+    .skill-card p {
+      color: var(--muted);
+      font-size: 0.94rem;
+    }
+
+    /* Projects */
+    #projects {
+      background: white;
+      max-width: none;
+    }
+
+    .projects-inner {
+      max-width: 1050px;
+      margin: auto;
+    }
+
+    .projects-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+
+    .project {
+      border: 1px solid var(--border);
+      border-radius: 14px;
+      padding: 25px;
+      background: var(--background);
+      display: flex;
+      flex-direction: column;
+      min-height: 310px;
+    }
+
+    .project-number {
+      color: var(--blue);
+      font-weight: 800;
+      font-size: 0.82rem;
+      margin-bottom: 14px;
+    }
+
+    .project h3 {
+      color: var(--navy);
+      font-size: 1.25rem;
+      margin-bottom: 10px;
+    }
+
+    .project p {
+      color: var(--muted);
+      font-size: 0.94rem;
+      flex-grow: 1;
+    }
+
+    .project-tags {
+      display: flex;
+      gap: 7px;
+      flex-wrap: wrap;
+      margin: 18px 0;
+    }
+
+    .tag {
+      background: var(--blue-light);
+      color: var(--blue);
+      padding: 5px 9px;
+      border-radius: 20px;
+      font-size: 0.75rem;
+      font-weight: 700;
+    }
+
+    .project-link {
+      color: var(--blue);
+      font-weight: 800;
+      font-size: 0.9rem;
+    }
+
+    .project-link:hover {
+      text-decoration: underline;
+    }
+
+    /* Contact */
+    .contact {
+      text-align: center;
+    }
+
+    .contact .section-description {
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .contact-buttons {
+      display: flex;
+      justify-content: center;
+      gap: 12px;
+      flex-wrap: wrap;
+    }
+
+    footer {
+      text-align: center;
+      padding: 25px;
+      background: var(--navy);
+      color: #bcccdc;
+      font-size: 0.88rem;
+    }
+
+    /* Mobile */
+    @media (max-width: 800px) {
+      .nav-links {
+        display: none;
+      }
+
+      .hero-container {
+        grid-template-columns: 1fr;
+        text-align: center;
+        gap: 45px;
+      }
+
+      .statement {
+        margin: auto;
+      }
+
+      .hero-buttons {
+        justify-content: center;
+      }
+
+      .skills-grid,
+      .projects-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .headshot {
+        width: 220px;
+        height: 220px;
+      }
+    }
+  </style>
+</head>
+
+<body>
+
+  <nav>
+    <div class="nav-container">
+      <a href="#home" class="logo">AK</a>
+
+      <ul class="nav-links">
+        <li><a href="#statement">About</a></li>
+        <li><a href="#skills">Skills</a></li>
+        <li><a href="#projects">Projects</a></li>
+        <li><a href="#contact">Contact</a></li>
+      </ul>
+    </div>
+  </nav>
+
+  <!-- PERSONAL STATEMENT -->
+  <header class="hero" id="home">
+    <div class="hero-container">
+      <div>
+        <div class="eyebrow">Rutgers University • Finance</div>
+
+        <h1>Aanya Kyal</h1>
+
+        <p class="statement" id="statement">
+          I am a Rutgers University finance student developing my skills in financial
+          analysis, equity research, and business strategy while preparing for a career
+          in the finance industry.
+        </p>
+
+        <div class="hero-buttons">
+          <a class="button button-primary" href="#projects">View Projects</a>
+          <a class="button button-secondary" href="#contact">Connect With Me</a>
+        </div>
+      </div>
+
+      <div>
+        <img
+          src="headshot.jpg"
+          alt="Professional headshot of Aanya Kyal"
+          class="headshot"
+        >
+      </div>
+    </div>
+  </header>
+
+  <main>
+
+    <!-- SKILLS -->
+    <section id="skills">
+      <div class="section-label">What I Bring</div>
+      <h2 class="section-title">Skills</h2>
+
+      <p class="section-description">
+        A combination of technical finance knowledge and professional skills
+        developed through coursework, organizations, projects, and work experience.
+      </p>
+
+      <div class="skills-grid">
+        <div class="skill-card">
+          <h3>Financial Analysis</h3>
+          <p>Analyzing financial information and evaluating business performance.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Equity Research</h3>
+          <p>Researching companies, industries, competitive positioning, and investment considerations.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Microsoft Excel</h3>
+          <p>Using spreadsheets for organization, analysis, calculations, and financial work.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Market Research</h3>
+          <p>Examining market trends and company information to develop informed insights.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Communication</h3>
+          <p>Communicating clearly through teamwork, customer interactions, presentations, and mentoring.</p>
+        </div>
+
+        <div class="skill-card">
+          <h3>Teamwork & Organization</h3>
+          <p>Collaborating on projects and managing responsibilities in academic and student organizations.</p>
+        </div>
+      </div>
+    </section>
+
+    <!-- PROJECTS -->
+    <section id="projects">
+      <div class="projects-inner">
+        <div class="section-label">Selected Work</div>
+        <h2 class="section-title">Projects</h2>
+
+        <p class="section-description">
+          Finance and business projects that demonstrate my interest in research,
+          financial markets, and strategic decision-making.
+        </p>
+
+        <div class="projects-grid">
+
+          <article class="project">
+            <div class="project-number">PROJECT 01</div>
+            <h3>ASML Equity Research</h3>
+
+            <p>
+              Researched ASML's competitive positioning, EUV technology leadership,
+              R&D strategy, valuation considerations, and exposure to AI-driven
+              semiconductor demand to develop an investment thesis.
+            </p>
+
+            <div class="project-tags">
+              <span class="tag">Equity Research</span>
+              <span class="tag">Valuation</span>
+              <span class="tag">Semiconductors</span>
+            </div>
+
+            <a
+              class="project-link"
+              href="https://docs.google.com/document/d/17AWpWDM2ZZjHr2j4jF94Aq_JtGtOVgCN6eLldCEMAyk/edit?usp=sharing"
+              target="_blank"
+              rel="noopener noreferrer"
+            >View Company Research →</a>
+          </article>
+
+          <article class="project">
+            <div class="project-number">PROJECT 02</div>
+            <h3>Costco Market Analysis</h3>
+
+            <p>
+              Analyzed Costco's recent sales and comparable-sales performance while
+              considering traffic, digital growth, and broader consumer and retail
+              trends as part of a finance newsletter research project.
+            </p>
+
+            <div class="project-tags">
+              <span class="tag">Market Research</span>
+              <span class="tag">Consumer & Retail</span>
+              <span class="tag">Financial Analysis</span>
+            </div>
+
+            <a
+              class="project-link"
+              href="https://investor.costco.com/"
+              target="_blank"
+              rel="noopener noreferrer"
+            >View Investor Resources →</a>
+          </article>
+
+        </div>
+      </div>
+    </section>
+
+    <!-- CONTACT -->
+    <section id="contact" class="contact">
+      <div class="section-label">Get In Touch</div>
+      <h2 class="section-title">Let's Connect</h2>
+
+      <p class="section-description">
+        I am interested in connecting with students, professionals, and employers
+        in finance, business, and related fields.
+      </p>
+
+      <div class="contact-buttons">
+
+        <a class="button button-primary" href="https://www.linkedin.com/aanyakyal" target="_blank" rel="noopener noreferrer">
+          LinkedIn
+        </a>
+
+        <a class="button button-secondary" href="https://github.com/" target="_blank" rel="noopener noreferrer">
+          GitHub
+        </a>
+      </div>
+    </section>
+
+  </main>
+
+  <footer>
+    © 2026 Aanya Kyal • Rutgers University Finance
+  </footer>
+
+</body>
+</html>
